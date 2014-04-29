@@ -1,7 +1,10 @@
 package com.jakon.slimotaur;
 
+
 import com.badlogic.gdx.ApplicationListener;
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -10,11 +13,14 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
-public class Slimotaur implements ApplicationListener {
+public class Slimotaur extends Game {
 	private OrthographicCamera camera;
 	private SpriteBatch batch;
 	private Texture texture;
 	private Sprite sprite;
+	
+	private enum gameState {TITLE, PLAYING, GAMEOVER}
+	private Screen title, playing, gameOver;
 	
 	@Override
 	public void create() {		

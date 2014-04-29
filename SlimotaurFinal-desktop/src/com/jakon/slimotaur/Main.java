@@ -8,8 +8,8 @@ public class Main {
 	public static void main(String[] args) {
 		LwjglApplicationConfiguration cfg = new LwjglApplicationConfiguration();
 		cfg.title = "SlimotaurFinal";
-		cfg.width = 480;
-		cfg.height = 320;
+		cfg.width = 800;
+		cfg.height = 800;
 		
 		new LwjglApplication(new Slimotaur(), cfg);
 	}
