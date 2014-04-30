@@ -1,12 +1,12 @@
 package com.jakon.slimotaur;
 
-
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.PerspectiveCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -14,10 +14,13 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public class Slimotaur extends Game {
-	private OrthographicCamera camera;
+	private OrthographicCamera OCam;
+	private PerspectiveCamera PCam;
 	private SpriteBatch batch;
 	private Texture texture;
 	private Sprite sprite;
+	
+	private Maze maze;
 	
 	private enum gameState {TITLE, PLAYING, GAMEOVER}
 	private Screen title, playing, gameOver;
@@ -27,7 +30,8 @@ public class Slimotaur extends Game {
 		float w = Gdx.graphics.getWidth();
 		float h = Gdx.graphics.getHeight();
 		
-		camera = new OrthographicCamera(1, h/w);
+		OCam = new OrthographicCamera(1, h/w);
+		PCam = new PerspectiveCamera(67f,1, h/w);
 		batch = new SpriteBatch();
 		
 		texture = new Texture(Gdx.files.internal("data/libgdx.png"));
@@ -49,10 +53,10 @@ public class Slimotaur extends Game {
 
 	@Override
 	public void render() {		
-		Gdx.gl.glClearColor(1, 1, 1, 1);
+		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		
-		batch.setProjectionMatrix(camera.combined);
+		batch.setProjectionMatrix(OCam.combined);
 		batch.begin();
 		sprite.draw(batch);
 		batch.end();
